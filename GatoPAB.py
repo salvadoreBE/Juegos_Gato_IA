@@ -69,7 +69,7 @@ def minimax_alpha_beta(tablero, profundidad, alpha, beta, es_turno_max):
                 break
         return mejor_valor
 
-def jugar_maquina(tablero):
+def jugar_IA(tablero):
     mejor_valor = float("-inf")
     mejor_movimiento = None
     alpha = float("-inf")
@@ -90,19 +90,19 @@ def jugar_maquina(tablero):
 
 def jugar_gato():
     tablero = [[" " for _ in range(3)] for _ in range(3)]
-    turno_maquina = random.choice([True, False])
+    turno_IA = random.choice([True, False])
 
     while True:
         dibujar_tablero(tablero)
 
-        if turno_maquina:
+        if turno_IA:
             print("Turno de la IA (X):")
-            jugar_maquina(tablero)
+            jugar_IA(tablero)
             if revisar_ganador(tablero, "X"):
                 dibujar_tablero(tablero)
                 print("¡La IA ha ganado!")
                 break
-            turno_maquina = False
+            turno_IA = False
         else:
             print("Tu turno (O):")
             fila = int(input("Ingrese el número de fila (0-2): "))
@@ -114,7 +114,7 @@ def jugar_gato():
                     dibujar_tablero(tablero)
                     print("¡Has ganado!")
                     break
-                turno_maquina = True
+                turno_IA = True
             else:
                 print("Movimiento inválido. Intente nuevamente.")
 
